@@ -1,0 +1,14 @@
+helmDefaults:
+  createNamespace: false
+  wait: true
+  cleanupOnFail: true
+  timeout: 72000
+  atomic: false
+  historyMax: 3
+
+releases:
+  - name: testparallel
+    chart: ../charts/testparallel
+    namespace: default
+    values:
+      - values.yaml

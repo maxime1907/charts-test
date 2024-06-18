@@ -1,0 +1,27 @@
+configHistoricalIndividual: |
+  druid_processing_numMergeBuffers: "4"
+
+persistence:
+  enabled: true
+  size: 1Gi
+  # storageClass: "topolvm-provisioner"
+
+podManagementPolicy: Parallel
+updateStrategy:
+  type: RollingUpdate
+
+replicaCount: 2
+
+pdb:
+  enabled: true
+  # minAvailable: 1
+  maxUnavailable: 1
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetMetric:
+    name: todo_implement_metric_for_druid_timeout_and_cpu_usage_and_disk_pressure
+    value: 7
+    scaleDownStabilizationWindowSeconds: 10
